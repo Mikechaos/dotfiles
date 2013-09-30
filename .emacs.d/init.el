@@ -25,8 +25,26 @@
 (setq inhibit-startup-message t)
 (setq save-abbrevs nil)
 (setq show-trailing-whitespace t)
-(setq suggest-key-bindings t)
+(setq suggest-key-bindings nil)
 (setq vc-follow-symlinks t)
+
+(global-set-key (kbd "C-?") 'help-command)
+(global-set-key (kbd "M-?") 'mark-paragraph)
+(global-set-key (kbd "C-h") 'delete-backward-char)
+(global-set-key (kbd "M-h") 'backward-kill-word)
+(global-set-key (kbd "C-d") 'delete-backward-char)
+(global-set-key [backspace] 'delete-backward-char)
+(global-set-key [M-backspace] 'backward-kill-word)
+
+(setq inferior-js-mode-hook
+      (lambda ()
+        ;; We like nice colors
+        (ansi-color-for-comint-mode-on)
+        ;; Deal with some prompt nonsense
+        (add-to-list
+         'comint-preoutput-filter-functions
+         (lambda (output)
+	   (replace-regexp-in-string "\033\\[[0-9]+[A-Z]" "" output)))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
