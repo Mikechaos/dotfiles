@@ -210,12 +210,13 @@ is run).
   (js-send-region-and-go (point-min) (point-max)))
 
 ;;;###autoload
-(defun js-load-file (filename)
+(defun js-load-file
+ (filename)
   "Load a file in the javascript interpreter."
   (interactive "f")
   (let ((filename (expand-file-name filename)))
     (run-js inferior-js-program-command t)
-    (comint-send-string inferior-js-buffer (concat "load(\"" filename "\")\n"))))
+    (comint-send-string inferior-js-buffer (concat ".load(\"" filename "\")\n"))))
 
 ;;;###autoload
 (defun js-load-file-and-go (filename)

@@ -300,7 +300,8 @@ called `coffee-compiled-buffer-name'."
 ;; CoffeeScript keywords.
 (defvar coffee-cs-keywords
       '("then" "unless" "and" "or" "is"
-        "isnt" "not" "of" "by" "where" "when"))
+        "isnt" "not" "of" "by" "where" "when"
+		"await" "defer"))
 
 ;; Regular expression combining the above three lists.
 (defvar coffee-keywords-regexp (regexp-opt
@@ -662,6 +663,7 @@ previous line."
 ;; Run coffee-mode for files ending in .coffee.
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.iced\\'" . coffee-mode))
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 ;;; coffee-mode.el ends here

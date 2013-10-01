@@ -1,0 +1,1 @@
+alias icake = '/home/ubuntu/.nvm/v0.10.12/lib/node_modules/iced-coffee-script/bin/cake'
