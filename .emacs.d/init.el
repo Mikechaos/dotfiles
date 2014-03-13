@@ -33,15 +33,16 @@
 (setq suggest-key-bindings nil)
 (setq vc-follow-symlinks t)
 
-
 ; add shell mode to bash scripts
 (add-to-list 'auto-mode-alist '("\\.bash\\'" . shell-script-mode))
 
-(global-set-key (kbd "C-h") 'help-command)
+; (global-set-key (kbd "C-h") 'help-command)
+(global-set-key (kbd "C-h") 'delete-backward-char)
+
 (global-set-key (kbd "M-?") 'mark-paragraph)
 ;; (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "M-h") 'backward-kill-word)
-(global-set-key (kbd "C-d") 'delete-backward-char)
+; (global-set-key (kbd "C-d") 'delete-backward-char)
 (global-set-key [backspace] 'delete-backward-char)
 (global-set-key [M-backspace] 'backward-kill-word)
 
@@ -72,7 +73,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit autoface-default :strike-through nil :underline nil :slant normal :weight normal :height 120 :width normal :family "monaco"))))
+ '(default ((t (:inherit autoface-default :strike-through nil :underline nil :slant normal :weight normal :height 80 :width normal :family "monaco"))))
  '(column-marker-1 ((t (:background "red"))) t)
  '(diff-added ((t (:foreground "cyan"))) t)
  '(flymake-errline ((((class color) (background light)) (:background "Red"))) t)
@@ -99,9 +100,11 @@
 (global-set-key "\M-o" 'other-window)
 (global-set-key "\M-i" 'back-window)
 (global-set-key "\C-z" 'zap-to-char)
-(global-set-key "\C-h" 'help-command)
-(global-set-key "\M-d" 'delete-word)
-(global-set-key "\M-h" 'backward-delete-word)
+; (global-set-key "\C-h" 'help-command)
+(global-set-key "\C-h" 'delete-backward-char)
+(global-set-key "\M-d" 'kill-word)
+; (global-set-key "\M-h" 'backward-delete-word)
+(global-set-key "\M-h" 'backward-kill-word)
 (global-set-key "\M-u" 'zap-to-char)
 
 ;; ---------------------------
@@ -169,7 +172,7 @@
       (set-fringe-style nil)
     (set-fringe-mode
      (/ (- (frame-pixel-width)
-           (* 100 (frame-char-width)))
+           (* 200 (frame-char-width)))
         2))))
 
 ;; Now activate this global minor mode
@@ -177,14 +180,14 @@
 
 ;; To activate the fringe by default and deactivate it when windows
 ;; are split vertically, uncomment this:
-;; (add-hook 'window-configuration-change-hook
-;;           (lambda ()
-;;             (if (delq nil
-;;                       (let ((fw (frame-width)))
-;;                         (mapcar (lambda(w) (< (window-width w) fw))
-;;                                 (window-list))))
-;;                 (bzg-big-fringe-mode 0)
-;;               (bzg-big-fringe-mode 1))))
+(add-hook 'window-configuration-change-hook
+          (lambda ()
+            (if (delq nil
+                      (let ((fw (frame-width)))
+                        (mapcar (lambda(w) (< (window-width w) fw))
+                                (window-list))))
+                (bzg-big-fringe-mode 0)
+              (bzg-big-fringe-mode 1))))
 
 ;; Use a minimal cursor
 ;; (setq cursor-type 'hbar)
