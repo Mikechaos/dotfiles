@@ -27,3 +27,7 @@ alias sched='cd /opt/lampp/htdocs/schedulingdirect'
 
 # reload aliases
 alias loadalias='source ~/dotfiles/.bash_aliases'
+
+# git shortcuts
+alias gpu='git push 2>&1 | tail -2 | `head -1`'
+
